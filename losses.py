@@ -1,5 +1,4 @@
 import numpy as np
-from layers import *
 
 def logistic_est_loss(y_est, y):
     """
@@ -36,6 +35,7 @@ def logistic_loss_deriv(u, y):
     float:
         Derivative of logistic loss over all samples
     """
+    from layers import logistic
     return logistic(u)-y
 
 

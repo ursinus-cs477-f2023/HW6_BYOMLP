@@ -15,16 +15,8 @@ class NeuralNet:
         to the last layer, using the output of the last layer
     """
     def __init__(self, d, est_lossderiv):
-        # Parameters for the network
-        self.d = d
-        self.Ws = [] # NOTE: L = len(self.Ws)
-        self.bs = []
-        self.fs = [] 
-        self.est_lossderiv = est_lossderiv
-
-        # Temporary variables to store outputs of each layer
-        self.h = []
-        self.a = []
+        ## TODO: Fill this in
+        pass
         
     
     def add_layer(self, m, f, fderiv):
@@ -38,17 +30,13 @@ class NeuralNet:
         fderiv: function ndarray(N) -> ndarray(N)
             Derivative of activation function, which is applied element-wise
         """
-        n = self.d
-        if len(self.Ws) > 0:
-            n = self.Ws[-1].shape[0]
-        self.Ws.append(np.random.randn(m, n))
-        self.bs.append(np.random.randn(m))
-        self.fs.append({"f":f, "fderiv":fderiv})
+        ## TODO: Fill this in
+        pass
 
     
     def forward(self, x):
         """
-        Do a forward pass on the network
+        Do a forward pass on the network, remembering the intermediate outputs
         
         Parameters
         ----------
@@ -60,20 +48,13 @@ class NeuralNet:
         ndarray(m)
             Output of the network
         """
-        self.h = [x]
-        self.a = [None]
-        for k in range(len(self.Ws)):
-            a = self.bs[k] + self.Ws[k].dot(self.h[k])
-            h = self.fs[k]["f"](a)
-            self.a.append(a)
-            self.h.append(h)
-        return self.h[-1].flatten()
+        ## TODO: Fill this in
+        pass
     
-    def backprop_descent(self, x, y, alpha=0.01):
+    def backward(self, x, y):
         """
-        Do stochastic gradient backpropagation to compute the 
-        gradient of all parameters on a single example, then 
-        take a step against that direction by the learning rate
+        Do backpropagation to accumulate the gradient of
+        all parameters on a single example
         
         Parameters
         ----------
@@ -82,8 +63,24 @@ class NeuralNet:
         y: float or ndarray(k)
             Goal output.  Dimensionality should match dimensionality
             of the last output layer
+        """
+        ## TODO: Fill this in to complete backpropagation and accumulate derivatives
+
+    def step(self, alpha):
+        """
+        Apply the gradient and take a step back
+
+        Parameters
+        ----------
         alpha: float
             Learning rate
         """
-        self.forward(x) # Always do the forward step first to compute the a's and h's
-        ## TODO: Fill this in to complete backpropagation and weight updates
+        ## TODO: Fill this in
+        pass
+
+    def zero_grad(self):
+        """
+        Reset all gradients to zero
+        """
+        ## TODO: Fill this in
+        pass
