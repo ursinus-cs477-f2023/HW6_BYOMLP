@@ -96,4 +96,42 @@ def softmax_est_crossentropy_deriv(y_est, y):
     ndarray(N):
         Derivative of multiclass softmax cross-entropy
     """
-    return y_est - y
+    return y_est-y
+
+def squared_loss(y_est, y):
+    """
+    Compute the squared loss with respect to its
+    input variables, given the output of the layer before it
+
+    Parameters
+    ----------
+    y_est: ndarray(N)
+        Output of the layer before the squared loss
+    y: ndarray(N)
+        Target of the output of the layer before
+    
+    Returns
+    -------
+    float:
+        Squared loss
+    """
+    return np.sum((y-y_est)**2)
+
+def squared_loss_deriv(y_est, y):
+    """
+    Compute the gradient of the squared loss with respect to its
+    input variables, given the output of the layer before it
+
+    Parameters
+    ----------
+    y_est: ndarray(N)
+        Output of the layer before the squared loss
+    y: ndarray(N)
+        Target of the output of the layer before
+    
+    Returns
+    -------
+    ndarray(N):
+        Derivative of the squared loss
+    """
+    return 2*(y-y_est)

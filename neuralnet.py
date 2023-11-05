@@ -24,7 +24,7 @@ class NeuralNet:
         Parameters
         ----------
         m: int
-            Number of nodes in the layer
+            Number of neurons in the layer
         f: function ndarray(N) -> ndarray(N)
             Activation function, which is applied element-wise
         fderiv: function ndarray(N) -> ndarray(N)
