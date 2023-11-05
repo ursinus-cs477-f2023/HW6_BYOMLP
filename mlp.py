@@ -4,7 +4,8 @@ from layers import *
 
 class NeuralNet:
     """
-    A class for learning with fully connected neural networks
+    A class for representing MLPs, which is amenable to performing
+    backpropagation quickly using numpy operations
 
     Parameters
     ----------
