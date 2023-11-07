@@ -2,7 +2,7 @@ import numpy as np
 from losses import *
 from layers import *
 
-class NeuralNet:
+class MLP:
     """
     A class for representing MLPs, which is amenable to performing
     backpropagation quickly using numpy operations
@@ -20,7 +20,7 @@ class NeuralNet:
         pass
         
     
-    def add_layer(self, m, f, fderiv):
+    def add_layer(self, m, f, fderiv, name=None):
         """
         Parameters
         ----------
@@ -30,12 +30,14 @@ class NeuralNet:
             Activation function, which is applied element-wise
         fderiv: function ndarray(N) -> ndarray(N)
             Derivative of activation function, which is applied element-wise
+        name: string
+            If specified, store the name of this layer
         """
         ## TODO: Fill this in
         pass
 
     
-    def forward(self, x):
+    def forward(self, x, start=None, end=None):
         """
         Do a forward pass on the network, remembering the intermediate outputs
         
@@ -43,6 +45,10 @@ class NeuralNet:
         ----------
         x: ndarray(d)
             Input to feed through
+        start: string
+            If specified, start by feeding x to the input of this layer
+        end: string
+            If specified, stop and return the output of this layer
         
         Returns
         -------
@@ -66,6 +72,8 @@ class NeuralNet:
             of the last output layer
         """
         ## TODO: Fill this in to complete backpropagation and accumulate derivatives
+        pass
+        
 
     def step(self, alpha):
         """

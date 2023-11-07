@@ -31,7 +31,7 @@ def logistic_deriv(u):
     res = logistic(u)
     return res*(1-res)
 
-def leaky_relu(u):
+def leaky_relu(u, alpha=0.01):
     """
     Compute the leaky ReLU on a set of inputs
 
@@ -39,6 +39,8 @@ def leaky_relu(u):
     ----------
     u: ndarray(N)
         A set of inputs to the Leaky ReLU function
+    alpha: float
+        Slope in negative region
     
     Returns
     -------
@@ -46,10 +48,10 @@ def leaky_relu(u):
     """
     res = np.zeros_like(u)
     res[u > 0] = u[u > 0]
-    ## TODO: Finish this
+    res[u < 0] = alpha*res[u < 0]
     return res 
 
-def leaky_relu_deriv(u):
+def leaky_relu_deriv(u, alpha=0.01):
     """
     Compute the leaky ReLU's derivative on a set of inputs
 
@@ -63,8 +65,9 @@ def leaky_relu_deriv(u):
     ndarray(N): Derivatives of Leaky ReLU at these inputs
     """
     res = np.zeros_like(u)
-    ## TODO: Finish this
-    return res ## TODO: This is a dummy value
+    res[u > 0] = 1
+    res[u < 0] = alpha
+    return res
 
 def softmax(u):
     """
@@ -80,6 +83,5 @@ def softmax(u):
     ndarray(N)
         The softmax of the input at every dimension
     """
-    ## TODO: Fill this in with a numerically stable
-    ## version of softmax
-    return 0*u ## TODO: this is a dummy value
+    res = np.exp(u)
+    return res/np.sum(res)

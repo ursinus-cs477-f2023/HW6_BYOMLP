@@ -134,4 +134,42 @@ def squared_loss_deriv(y_est, y):
     ndarray(N):
         Derivative of the squared loss
     """
-    return 2*(y-y_est)
+    return 2*(y_est-y)
+
+def abs_loss(y_est, y):
+    """
+    Compute the absolute value loss with respect to its
+    input variables, given the output of the layer before it
+
+    Parameters
+    ----------
+    y_est: ndarray(N)
+        Output of the layer before the squared loss
+    y: ndarray(N)
+        Target of the output of the layer before
+    
+    Returns
+    -------
+    float:
+        Absolute value loss
+    """
+    return np.sum(np.abs(y-y_est))
+
+def abs_loss_deriv(y_est, y):
+    """
+    Compute the gradient of the absolute value loss with respect to its
+    input variables, given the output of the layer before it
+
+    Parameters
+    ----------
+    y_est: ndarray(N)
+        Output of the layer before the squared loss
+    y: ndarray(N)
+        Target of the output of the layer before
+    
+    Returns
+    -------
+    ndarray(N):
+        Derivative of the squared loss
+    """
+    return np.sign(y_est-y)
